@@ -44,8 +44,17 @@ docker rmi mon-image:latest
 ## Forcer la suppression
 docker rmi -f mon-image:latest
 
+  # 3) Netoyage
+## Nettoyer les conteneurs arrêtés
+docker container prune
 
-  # 3)Deploiement de site sur Docker
+## Nettoyer les images non utilisées
+docker image prune
+
+## Nettoyer tout le système
+docker system prune
+
+  # 4)Deploiement de site sur Docker
 
 ## Structure de base d'un fichier prêt au deploiement
    mon-site/
@@ -126,3 +135,16 @@ docker-compose up -d
 
 ### Voir les logs
 docker-compose logs -f
+
+   # 5) Maintenance 
+## Voir l'utilisation des ressources
+docker stats
+
+## Inspecter un conteneur
+docker inspect mon-conteneur
+
+## Exécuter une commande dans un conteneur
+docker exec -it mon-conteneur bash
+
+## Sauvegarder une base de données
+docker exec mon-db pg_dump -U user database > backup.sql
